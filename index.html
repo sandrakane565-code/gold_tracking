@@ -1,198 +1,184 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2113.65">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-    span.s1 {font: 12.0px 'Apple Color Emoji'}
-    span.s2 {font: 12.0px 'Lucida Grande'}
+  <title>Gold Tracking</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    body {
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: white;
+    }
+    header {
+      background: black;
+      color: gold;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,215,0,0.2);
+    }
+    input, button, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+    }
+    input {
+      background: #2a2a2a;
+      color: white;
+    }
+    button {
+      background: gold;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .hidden { display:none; }
+    .status {
+      padding:6px 10px;
+      border-radius:5px;
+      font-weight:bold;
+      display:inline-block;
+    }
+    .Ongoing { background:#1f7a1f; }
+    .Held { background:#a67c00; }
+    .Stopped { background:#8b0000; }
+    .Delivered { background:#004080; }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Gold Tracking&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin:0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: Arial, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #0d0d0d;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>header {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: black;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: gold;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 28px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 600px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 40px auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #1a1a1a;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 20px rgba(255,215,0,0.2);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>input, button, select {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 6px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 14px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>input {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #2a2a2a;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>button {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: gold;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: black;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>button:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>opacity: 0.9;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hidden { display:none; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.status {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding:6px 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius:5px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight:bold;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display:inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.Ongoing { background:#1f7a1f; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.Held { background:#a67c00; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.Stopped { background:#8b0000; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.Delivered { background:#004080; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;header&gt;<span class="s1">🚛</span> Gold Tracking&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="container" id="trackingSection"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;h3&gt;Track Your Shipment&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;input type="text" id="trackingInput" placeholder="Enter Tracking ID"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="trackShipment()"&gt;Track Shipment&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="result" style="margin-top:20px;"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="showAdmin()" style="margin-top:20px;"&gt;Admin Login&lt;/button&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="container hidden" id="adminSection"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;h3&gt;Admin Login&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;input type="email" id="email" placeholder="Email"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;input type="password" id="password" placeholder="Password"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;button onclick="login()"&gt;Login&lt;/button&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="adminDashboard" class="hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Create Shipment&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="customer" placeholder="Customer Name"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="origin" placeholder="Origin"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="destination" placeholder="Destination"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="createShipment()"&gt;Create Shipment&lt;/button&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3 style="margin-top:30px;"&gt;All Shipments&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="shipmentsList"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="logout()" style="margin-top:20px;"&gt;Logout&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const supabaseUrl = "https://goldtrack-ebnuveu9.manus.space";</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const supabaseKey = "https://glklaxiwbhynwvvanzfk.supabase.co";</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>function showAdmin(){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("trackingSection").classList.add("hidden");</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("adminSection").classList.remove("hidden");</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>async function trackShipment(){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const id = document.getElementById("trackingInput").value;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const { data } = await supabase.from("shipments").select("*").eq("tracking_id", id).single();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>if(!data){</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById("result").innerHTML = "Tracking not found.";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("result").innerHTML = `</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;&lt;strong&gt;Customer:&lt;/strong&gt; ${data.customer_name}&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;&lt;strong&gt;Route:&lt;/strong&gt; ${data.origin} <span class="s2">→</span> ${data.destination}&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;Status: &lt;span class="status ${data.status}"&gt;${data.status}&lt;/span&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;Last Updated: ${new Date(data.updated_at).toLocaleString()}&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>async function login(){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const email = document.getElementById("email").value;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const password = document.getElementById("password").value;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const { error } = await supabase.auth.signInWithPassword({ email, password });</p>
-<p class="p1"><span class="Apple-converted-space">    </span>if(error){ alert("Login failed"); return; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("adminDashboard").classList.remove("hidden");</p>
-<p class="p1"><span class="Apple-converted-space">    </span>loadShipments();</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>async function logout(){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>await supabase.auth.signOut();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>location.reload();</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>function generateTracking(){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>return "GT-" + Math.floor(10000 + Math.random()*90000);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>async function createShipment(){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const tracking = generateTracking();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>await supabase.from("shipments").insert([{</p>
-<p class="p1"><span class="Apple-converted-space">      </span>tracking_id: tracking,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>customer_name: document.getElementById("customer").value,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>origin: document.getElementById("origin").value,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>destination: document.getElementById("destination").value,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>status: "Ongoing",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>updated_at: new Date()</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}]);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>alert("Shipment Created: " + tracking);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>loadShipments();</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>async function loadShipments(){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const { data } = await supabase.from("shipments").select("*");</p>
-<p class="p1"><span class="Apple-converted-space">    </span>let html="";</p>
-<p class="p1"><span class="Apple-converted-space">    </span>data.forEach(s=&gt;{</p>
-<p class="p1"><span class="Apple-converted-space">      </span>html += `</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="border:1px solid #333;padding:10px;margin:10px 0;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;strong&gt;${s.tracking_id}&lt;/strong&gt; - ${s.customer_name}&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>${s.origin} <span class="s2">→</span> ${s.destination}&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;select onchange="updateStatus('${s.tracking_id}', this.value)"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;option ${s.status=="Ongoing"?"selected":""}&gt;Ongoing&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;option ${s.status=="Held"?"selected":""}&gt;Held&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;option ${s.status=="Stopped"?"selected":""}&gt;Stopped&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;option ${s.status=="Delivered"?"selected":""}&gt;Delivered&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("shipmentsList").innerHTML=html;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>async function updateStatus(id,status){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>await supabase.from("shipments").update({status:status,updated_at:new Date()}).eq("tracking_id",id);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>loadShipments();</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+
+<header>🚛 Gold Tracking</header>
+
+<div class="container" id="trackingSection">
+  <h3>Track Your Shipment</h3>
+  <input type="text" id="trackingInput" placeholder="Enter Tracking ID">
+  <button onclick="trackShipment()">Track Shipment</button>
+  <div id="result" style="margin-top:20px;"></div>
+  <button onclick="showAdmin()" style="margin-top:20px;">Admin Login</button>
+</div>
+
+<div class="container hidden" id="adminSection">
+  <h3>Admin Login</h3>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+
+  <div id="adminDashboard" class="hidden">
+    <h3>Create Shipment</h3>
+    <input type="text" id="customer" placeholder="Customer Name">
+    <input type="text" id="origin" placeholder="Origin">
+    <input type="text" id="destination" placeholder="Destination">
+    <button onclick="createShipment()">Create Shipment</button>
+
+    <h3 style="margin-top:30px;">All Shipments</h3>
+    <div id="shipmentsList"></div>
+
+    <button onclick="logout()" style="margin-top:20px;">Logout</button>
+  </div>
+</div>
+
+<script>
+  const supabaseUrl = "https://goldtrack-ebnuveu9.manus.space";
+  const supabaseKey = "https://glklaxiwbhynwvvanzfk.supabase.co";
+  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+  function showAdmin(){
+    document.getElementById("trackingSection").classList.add("hidden");
+    document.getElementById("adminSection").classList.remove("hidden");
+  }
+
+  async function trackShipment(){
+    const id = document.getElementById("trackingInput").value;
+    const { data } = await supabase.from("shipments").select("*").eq("tracking_id", id).single();
+    if(!data){
+      document.getElementById("result").innerHTML = "Tracking not found.";
+      return;
+    }
+    document.getElementById("result").innerHTML = `
+      <p><strong>Customer:</strong> ${data.customer_name}</p>
+      <p><strong>Route:</strong> ${data.origin} → ${data.destination}</p>
+      <p>Status: <span class="status ${data.status}">${data.status}</span></p>
+      <p>Last Updated: ${new Date(data.updated_at).toLocaleString()}</p>
+    `;
+  }
+
+  async function login(){
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if(error){ alert("Login failed"); return; }
+    document.getElementById("adminDashboard").classList.remove("hidden");
+    loadShipments();
+  }
+
+  async function logout(){
+    await supabase.auth.signOut();
+    location.reload();
+  }
+
+  function generateTracking(){
+    return "GT-" + Math.floor(10000 + Math.random()*90000);
+  }
+
+  async function createShipment(){
+    const tracking = generateTracking();
+    await supabase.from("shipments").insert([{
+      tracking_id: tracking,
+      customer_name: document.getElementById("customer").value,
+      origin: document.getElementById("origin").value,
+      destination: document.getElementById("destination").value,
+      status: "Ongoing",
+      updated_at: new Date()
+    }]);
+    alert("Shipment Created: " + tracking);
+    loadShipments();
+  }
+
+  async function loadShipments(){
+    const { data } = await supabase.from("shipments").select("*");
+    let html="";
+    data.forEach(s=>{
+      html += `
+      <div style="border:1px solid #333;padding:10px;margin:10px 0;">
+        <strong>${s.tracking_id}</strong> - ${s.customer_name}<br>
+        ${s.origin} → ${s.destination}<br>
+        <select onchange="updateStatus('${s.tracking_id}', this.value)">
+          <option ${s.status=="Ongoing"?"selected":""}>Ongoing</option>
+          <option ${s.status=="Held"?"selected":""}>Held</option>
+          <option ${s.status=="Stopped"?"selected":""}>Stopped</option>
+          <option ${s.status=="Delivered"?"selected":""}>Delivered</option>
+        </select>
+      </div>
+      `;
+    });
+    document.getElementById("shipmentsList").innerHTML=html;
+  }
+
+  async function updateStatus(id,status){
+    await supabase.from("shipments").update({status:status,updated_at:new Date()}).eq("tracking_id",id);
+    loadShipments();
+  }
+</script>
+
 </body>
 </html>
